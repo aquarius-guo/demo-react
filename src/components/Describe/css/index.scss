@@ -1,0 +1,77 @@
+// 当小于 992px 时隐藏
+@media screen and (max-width: 992px) {
+	.describe {
+		display: none;
+	}
+}
+
+.describe {
+  order: 1;
+  width: 16.66666667%;
+  min-width: 200px;
+  height: calc(100vh - 64px - 40px);
+  .describe-avatar {
+    width: 100%;
+    text-align: center;
+    img {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+    }
+    h2 {
+      font-size: 22px;
+      height: 42px;
+    }
+    p:nth-child(1) {
+      font-size: 14px;
+    }
+    p:last-child {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      a {
+        color: rgba(0, 0, 0, 0.85);
+        svg {
+          margin-right: 5px;
+        }
+      }
+    }
+    & > *:not(:first-child) {
+      margin: 6px 0;
+    }
+  }
+  .hr-tag {
+		position: relative;
+    span {
+      padding-left: 30px;
+      color: rgba(0, 0, 0, 0.85);
+      font-weight: 500;
+      font-size: 16px;
+    }
+    &::before {
+			position: absolute;
+			top: 50%;
+			right: 10px;
+			width: calc(100% - 90px);
+			content: "";
+			display: inline-block;
+			border-bottom: 1px solid rgba(226, 223, 223, 0.815);
+    }
+  }
+	.describe-tag{
+		padding: 12px;
+		width: 100%;
+		box-sizing: border-box;
+		& > *{
+			margin: 8px 4px;
+			border-radius: 6px;
+		}
+	}
+	.describe-friend-links{
+		height: 40px;
+		min-width: 200px;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+}
