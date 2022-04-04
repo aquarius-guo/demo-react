@@ -3,7 +3,7 @@ import {
   Search,
   Login,
   Category
-} from "../index";
+} from "@/components";
 import "./css/index.scss";
 
 export default function Header() {
