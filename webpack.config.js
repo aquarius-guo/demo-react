@@ -41,11 +41,27 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 use: ["babel-loader"]
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            name: 'img/[name].[hash:6][ext]',
+                            esModule: false,
+                            limit: 10 * 1024
+                        }
+                    }
+                ]
             }
         ]
     },
     resolve: {
-        extensions: [".js", ".jsx", ".json", ".tsx", ".ts"]
+        extensions: [".js", ".jsx", ".json", ".tsx", ".ts"],
+        alias: {
+            "@": path.resolve(__dirname, "src")
+        }
     },
     plugins: [
         new CleanWebpackPlugin(),
