@@ -1,4 +1,3 @@
-import React from "react";
 import Search from "./Search";
 import Login from "./Login";
 import Category from "./Category";
@@ -6,7 +5,8 @@ import Header from "./Header";
 import Content from "./Content";
 import Describe from "./Describe";
 import Lists from "./Lists";
-const Wrap = React.lazy(() => import("./Wrap"));
+import Loading from "./Loading"
+import Wrap from "./Wrap";
 
 export {
     Search,
@@ -16,5 +16,6 @@ export {
     Content,
     Describe,
     Lists,
-    Wrap
+    Loading,
+    Wrap,
 }
