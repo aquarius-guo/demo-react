@@ -1,6 +1,22 @@
+// 当小于 992px 时隐藏
+@media screen and (max-width: 992px) {
+	.wrap {
+		margin: 0 !important;
+        width: calc(100% - 350px) !important;
+	}
+}
+
+@media screen and (max-width: 765px) {
+    .wrap{
+        margin: 0 !important;
+        width: 100% !important;
+    }
+  }
+
 .wrap{
     order: 2;
-    width: 1250px;
-    height: calc((100vh - 64px) - 40px);
-    background-color: pink;
+    margin: 0 0 0 16.66666667%;
+    width: calc(100% - 16.6666667% - 350px);
+    box-sizing: border-box;
+    border-right: 1px solid rgba(248, 248, 248, 0.8);
 }
