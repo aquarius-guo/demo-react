@@ -20,6 +20,7 @@ export default function Header() {
         <Category />
         <Login />
       </div>
+      <div style={{clear: "both"}}></div>
     </div>
   )
 }
