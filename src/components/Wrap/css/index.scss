@@ -16,7 +16,12 @@
 .wrap{
     order: 2;
     margin: 0 0 0 16.66666667%;
+    padding: 16px 24px;;
     width: calc(100% - 16.6666667% - 350px);
     box-sizing: border-box;
     border-right: 1px solid rgba(248, 248, 248, 0.8);
+}
+
+.wrap-show{
+    width: calc(100% - 16.6666667%);
 }
