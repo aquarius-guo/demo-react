@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from "antd";
+import { useLocation } from 'react-router-dom';
 import {
   Wrap,
   Lists,
@@ -8,11 +8,14 @@ import {
 import "./css/index.scss"
 
 export default function Content() {
+  const { pathname } = useLocation()
   return (
     <div className='content'>
       <Wrap />
       <Describe />
-      <Lists />
+      {
+        (pathname !== "/categorys" && pathname !== "/archives") && <Lists />
+      }
     </div>
   )
 }
