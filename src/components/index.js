@@ -9,13 +9,13 @@ import Loading from "./Loading"
 import Wrap from "./Wrap";
 
 export {
-    Search,
-    Login,
-    Category,
-    Header,
-    Content,
-    Describe,
-    Lists,
-    Loading,
-    Wrap,
+	Search,
+	Login,
+	Category,
+	Header,
+	Content,
+	Describe,
+	Lists,
+	Loading,
+	Wrap,
 }
