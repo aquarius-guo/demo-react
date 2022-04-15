@@ -10,13 +10,20 @@ module.exports = {
         path: path.resolve(__dirname, "dist")
     },
     devServer: {
-        historyApiFallback: true
+        historyApiFallback: true,
+        proxy: {
+            "/api": {
+                target: "https://github.com",
+                pathRewrite: { "^/api": "" },
+                changeOrigin: true
+            }
+        }
     },
     module: {
         rules: [
             {
                 test: /\.scss$/,
-                use:[
+                use: [
                     "style-loader",
                     {
                         loader: "css-loader",
@@ -31,7 +38,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    "style-loader", 
+                    "style-loader",
                     {
                         loader: "css-loader",
                         options: {
