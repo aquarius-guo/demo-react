@@ -1,0 +1,57 @@
+$pd_btm: 40px;
+.archives-steps {
+  padding: 10px 0;
+  margin: 0 auto;
+  width: 300px;
+  height: 560px;
+  .ant-timeline {
+    width: 100%;
+    height: 100%;
+    .ant-timeline-item {
+      &:nth-child(1) {
+        padding-bottom: $pd_btm;
+      }
+      &:nth-child(2) {
+        padding-bottom: $pd_btm;
+        & > div:nth-child(2) {
+          svg {
+            font-size: 20px;
+            color: #ff4d4f;
+          }
+        }
+        & > div:nth-child(3) {
+          h3 {
+            position: relative;
+            top: -6px;
+            font-size: 22px;
+            font-weight: bold;
+          }
+        }
+      }
+      .ant-timeline-item-content {
+        & > span {
+          position: relative;
+          top: -6px;
+          font-size: 22px;
+        }
+        div{
+            width: 274px;
+            span{
+                margin-right: 10px;
+                vertical-align: top;
+            }
+            a{
+                display: inline-block;
+                width: calc(274px - 50px);
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                &:hover{
+                    color: #0026ff;
+                }
+            }
+        }
+      }
+    }
+  }
+}
