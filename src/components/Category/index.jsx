@@ -1,15 +1,27 @@
 import React from "react";
-import { HomeOutlined, EditOutlined, TagsOutlined, UserSwitchOutlined } from "@ant-design/icons"
+import {
+  NavLink,
+} from "react-router-dom";
+import routes from "@/utils/categoryRoutes"
 import "./css/index.scss";
 
 function Category() {
   return (
     <div className="header-category">
       <ul>
-        <li><HomeOutlined /><span>首页</span></li>
-        <li><EditOutlined /><span>归档</span></li>
-        <li><TagsOutlined /><span>分类</span></li>
-        <li><UserSwitchOutlined /><span>关于</span></li>
+        {routes.map(item => {
+          return (
+            <NavLink key={item.to} to={`${item.to}`} style={({isActive}) => {
+              return {
+                color: isActive ? '#1890ff' : 'black',
+                borderBottom: isActive ? '2px solid #1890ff' : '2px solid transparent',
+              }
+            }}>
+              {item.icon}
+              <span>{item.title}</span>
+            </NavLink>
+          );
+        })}
       </ul>
     </div>
   );
