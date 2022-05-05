@@ -5,11 +5,12 @@
  */
 
 import axios from "axios";
+import { getToken } from "./parse";
 
 // axios 配置信息
 const BASE_CONFIG = {
     timeout: 5000,
-    baseURL: "",
+    baseURL: "http://localhost:8000",
 }
 
 // 创建实例
@@ -18,6 +19,7 @@ const instance = axios.create(BASE_CONFIG)
 // 请求拦截
 instance.interceptors.request.use(
     config => {
+        config.headers["Authorization"] = `token ${getToken()}`
         return config
     },
     error => {
@@ -28,8 +30,11 @@ instance.interceptors.request.use(
 // 响应拦截
 instance.interceptors.response.use(
     response => {
-        const {status, data} = response;
-        return data;
+        const {status, data, message} = response;
+        if(status === 200 || status === 304){
+            return data;
+        }
+        return Promise.reject(message);
     },
     error => {
         return Promise.reject(error)
