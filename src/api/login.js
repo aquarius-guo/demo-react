@@ -13,3 +13,6 @@ export const userLogin = async (code) => await axios.post("/api/login/oauth/acce
     redirect_uri: REDIRECT_URL,
     code,
 })
+
+// 获取用户信息
+export const getUserInfo = async () => await axios.get("https://api.github.com/user");
