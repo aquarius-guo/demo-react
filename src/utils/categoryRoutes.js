@@ -22,7 +22,7 @@ const categoryRoutes = [
         to: "/about",
         icon: <UserSwitchOutlined />,
         title: "关于"
-    }
+    },
 ]
 
 export default categoryRoutes;
