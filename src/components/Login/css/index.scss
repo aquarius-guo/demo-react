@@ -1,9 +1,10 @@
-.header-login{
+.header-login {
     position: relative;
     width: 56px;
     min-width: 56px;
     height: 100%;
-    div.header-avatar{
+
+    div.header-avatar {
         position: absolute;
         width: 32px;
         height: 32px;
@@ -13,14 +14,26 @@
         border-radius: 50%;
         background-color: rgba(0, 0, 0, 0.5);
         text-align: center;
-        span{
+
+        span {
             line-height: 32px;
             color: white
         }
     }
-    
+
+    img {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+    }
+
 }
-.header-info{
+
+.header-info {
     user-select: none;
     display: flex;
     align-items: center;
@@ -28,18 +41,21 @@
     height: 30px;
     line-height: 30px;
     background-color: white;
-    color:rgba(0, 0, 0, 0.863);
+    color: rgba(0, 0, 0, 0.863);
     font-size: 14px;
     box-shadow: 0 0 2px 2px rgba(192, 192, 192, 0.5);
-    & > .login-icon{
+
+    &>.login-icon {
         font-size: 18px;
     }
-    & > * {
+
+    &>* {
         margin: 0 10px;
     }
-    &:hover{
+
+    &:hover {
         cursor: pointer;
-        color:rgba(124, 121, 121, 0.863);
+        color: rgba(124, 121, 121, 0.863);
         transition: all .3s;
     }
 }
