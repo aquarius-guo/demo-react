@@ -1,177 +1,79 @@
-import React from 'react';
-import { Tag } from "antd";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Tag, Pagination } from "antd";
+import { getList } from '@/api/article';
+import TagList from '@/utils/tagColor';
 import "./css/index.scss";
 
 export default function Lists() {
+  // 文章列表
+  const [article, setArticle] = useState([]);
+  // 当前页数
+  const [current, setCurrent] = useState(1);
+  // 总数
+  const [countNumber, setCountNumber] = useState(1);
+  const navigator = useNavigate();
+  // 获取文章
+  useEffect(() => {
+    async function getArticlesList() {
+      const { data: { articleList, count } } = await getList({ pageSize: 4, pageIndex: current });
+      setArticle(articleList);
+      setCountNumber(count);
+    };
+    getArticlesList();
+  }, [current]);
+  // 跳转到指定的文章
+  const handleNavigator = (id) => {
+    navigator(`article?id=${id}`);
+  }
+  // 改变页数
+  const handleChange = (v) => {
+    setCurrent(v);
+  }
+
   return (
     <div className='pages-lists'>
-      <ul>
-        <li className='pages-lists-article'>
-          <div className='pages-lists-title'>
-            <span>
-              <a href="/" >什么是 XSS 攻击？</a>
-              <span>2022-02-23</span>
-            </span>
-          </div>
-          <div className='pages-lists-desc'>
-            <h2>什么是 XSS</h2>
-            <p>
-              <Tag color="error">XSS</Tag>
-              也称跨站脚本攻击，简单的来说就是当一个目标的站点被我们用户去访问，在渲染 HTML 这个过程中呢，出现了一些没有预期到的脚本指令，然后呢就会执行，这个时候呢，就产生了一个 XSS 的攻击。</p>
-            <p><Tag color="error">XSS</Tag>
-              攻击就是在用户访问这个页面的时候，插入一些自己的脚本。脚本让用户在访问这个页面的时候就可以执行这个脚本，攻击者通过插入的脚本执行呢，去获得用户的一些信息，比如说 cookie 发送到攻击者自己的网站，这就是跨站。</p>
-          </div>
-          <div className='pages-lists-tag'>
-            <span className='icon-tag'>
-              <svg className="icon login-icon pinglun" aria-hidden="true">
-                <use xlinkHref="#icon-pinglun"></use>
-              </svg>
-              0
-            </span>
-            <span className='icon-tag'>
-              <svg className="icon login-icon eye" aria-hidden="true">
-                <use xlinkHref="#icon-eye"></use>
-              </svg>
-              0
-            </span>
-            <Tag color="success">浏览器</Tag>
-            <Tag color="processing">浏览器安全</Tag>
-            <Tag color="error">XSS</Tag>
-          </div>
-        </li>
-        <li className='pages-lists-article'>
-          <div className='pages-lists-title'>
-            <span>
-              <a href="/" >什么是 XSS 攻击？</a>
-              <span>2022-02-23</span>
-            </span>
-          </div>
-          <div className='pages-lists-desc'>
-            <h2>什么是 XSS</h2>
-            <p>
-              <Tag color="error">XSS</Tag>
-              也称跨站脚本攻击，简单的来说就是当一个目标的站点被我们用户去访问，在渲染 HTML 这个过程中呢，出现了一些没有预期到的脚本指令，然后呢就会执行，这个时候呢，就产生了一个 XSS 的攻击。</p>
-            <p><Tag color="error">XSS</Tag>
-              攻击就是在用户访问这个页面的时候，插入一些自己的脚本。脚本让用户在访问这个页面的时候就可以执行这个脚本，攻击者通过插入的脚本执行呢，去获得用户的一些信息，比如说 cookie 发送到攻击者自己的网站，这就是跨站。</p>
-          </div>
-          <div className='pages-lists-tag'>
-            <span className='icon-tag'>
-              <svg className="icon login-icon pinglun" aria-hidden="true">
-                <use xlinkHref="#icon-pinglun"></use>
-              </svg>
-              0
-            </span>
-            <span className='icon-tag'>
-              <svg className="icon login-icon eye" aria-hidden="true">
-                <use xlinkHref="#icon-eye"></use>
-              </svg>
-              0
-            </span>
-            <Tag color="success">浏览器</Tag>
-            <Tag color="processing">浏览器安全</Tag>
-            <Tag color="error">XSS</Tag>
-          </div>
-        </li>
-        <li className='pages-lists-article'>
-          <div className='pages-lists-title'>
-            <span>
-              <a href="/" >什么是 XSS 攻击？</a>
-              <span>2022-02-23</span>
-            </span>
-          </div>
-          <div className='pages-lists-desc'>
-            <h2>什么是 XSS</h2>
-            <p>
-              <Tag color="error">XSS</Tag>
-              也称跨站脚本攻击，简单的来说就是当一个目标的站点被我们用户去访问，在渲染 HTML 这个过程中呢，出现了一些没有预期到的脚本指令，然后呢就会执行，这个时候呢，就产生了一个 XSS 的攻击。</p>
-            <p><Tag color="error">XSS</Tag>
-              攻击就是在用户访问这个页面的时候，插入一些自己的脚本。脚本让用户在访问这个页面的时候就可以执行这个脚本，攻击者通过插入的脚本执行呢，去获得用户的一些信息，比如说 cookie 发送到攻击者自己的网站，这就是跨站。</p>
-          </div>
-          <div className='pages-lists-tag'>
-            <span className='icon-tag'>
-              <svg className="icon login-icon pinglun" aria-hidden="true">
-                <use xlinkHref="#icon-pinglun"></use>
-              </svg>
-              0
-            </span>
-            <span className='icon-tag'>
-              <svg className="icon login-icon eye" aria-hidden="true">
-                <use xlinkHref="#icon-eye"></use>
-              </svg>
-              0
-            </span>
-            <Tag color="success">浏览器</Tag>
-            <Tag color="processing">浏览器安全</Tag>
-            <Tag color="error">XSS</Tag>
-          </div>
-        </li>
-        <li className='pages-lists-article'>
-          <div className='pages-lists-title'>
-            <span>
-              <a href="/" >什么是 XSS 攻击？</a>
-              <span>2022-02-23</span>
-            </span>
-          </div>
-          <div className='pages-lists-desc'>
-            <h2>什么是 XSS</h2>
-            <p>
-              <Tag color="error">XSS</Tag>
-              也称跨站脚本攻击，简单的来说就是当一个目标的站点被我们用户去访问，在渲染 HTML 这个过程中呢，出现了一些没有预期到的脚本指令，然后呢就会执行，这个时候呢，就产生了一个 XSS 的攻击。</p>
-            <p><Tag color="error">XSS</Tag>
-              攻击就是在用户访问这个页面的时候，插入一些自己的脚本。脚本让用户在访问这个页面的时候就可以执行这个脚本，攻击者通过插入的脚本执行呢，去获得用户的一些信息，比如说 cookie 发送到攻击者自己的网站，这就是跨站。</p>
-          </div>
-          <div className='pages-lists-tag'>
-            <span className='icon-tag'>
-              <svg className="icon login-icon pinglun" aria-hidden="true">
-                <use xlinkHref="#icon-pinglun"></use>
-              </svg>
-              0
-            </span>
-            <span className='icon-tag'>
-              <svg className="icon login-icon eye" aria-hidden="true">
-                <use xlinkHref="#icon-eye"></use>
-              </svg>
-              0
-            </span>
-            <Tag color="success">浏览器</Tag>
-            <Tag color="processing">浏览器安全</Tag>
-            <Tag color="error">XSS</Tag>
-          </div>
-        </li>
-        <li className='pages-lists-article'>
-          <div className='pages-lists-title'>
-            <span>
-              <a href="/" >什么是 XSS 攻击？</a>
-              <span>2022-02-23</span>
-            </span>
-          </div>
-          <div className='pages-lists-desc'>
-            <h2>什么是 XSS</h2>
-            <p>
-              <Tag color="error">XSS</Tag>
-              也称跨站脚本攻击，简单的来说就是当一个目标的站点被我们用户去访问，在渲染 HTML 这个过程中呢，出现了一些没有预期到的脚本指令，然后呢就会执行，这个时候呢，就产生了一个 XSS 的攻击。</p>
-            <p><Tag color="error">XSS</Tag>
-              攻击就是在用户访问这个页面的时候，插入一些自己的脚本。脚本让用户在访问这个页面的时候就可以执行这个脚本，攻击者通过插入的脚本执行呢，去获得用户的一些信息，比如说 cookie 发送到攻击者自己的网站，这就是跨站。</p>
-          </div>
-          <div className='pages-lists-tag'>
-            <span className='icon-tag'>
-              <svg className="icon login-icon pinglun" aria-hidden="true">
-                <use xlinkHref="#icon-pinglun"></use>
-              </svg>
-              0
-            </span>
-            <span className='icon-tag'>
-              <svg className="icon login-icon eye" aria-hidden="true">
-                <use xlinkHref="#icon-eye"></use>
-              </svg>
-              0
-            </span>
-            <Tag color="success">浏览器</Tag>
-            <Tag color="processing">浏览器安全</Tag>
-            <Tag color="error">XSS</Tag>
-          </div>
-        </li>
-      </ul>
+      {
+        article.length > 0 && (
+          <ul>
+            {
+              // 当有数据时
+              article.map((v, i) => {
+                return (
+                  <li className='pages-lists-article' key={i}>
+                    <div className='pages-lists-title'>
+                      <h1 onClick={handleNavigator.bind(this, v.id)}>{v.title}</h1>
+                      <span>{v.createdAt}</span>
+                    </div>
+                    <div className='pages-lists-desc' dangerouslySetInnerHTML={{ __html: v.editorValue }}></div>
+                    <div className='pages-lists-tag'>
+                      <span className='icon-tag'>
+                        <svg className="icon login-icon pinglun" aria-hidden="true">
+                          <use xlinkHref="#icon-pinglun"></use>
+                        </svg>
+                        0
+                      </span>
+                      <span className='icon-tag'>
+                        <svg className="icon login-icon eye" aria-hidden="true">
+                          <use xlinkHref="#icon-eye"></use>
+                        </svg>
+                        {v.watchNum}
+                      </span>
+                      {
+                        v.optionsTag.map((v, i) => {
+                          const color = Math.floor(Math.random() * TagList.length);
+                          return <Tag color={TagList[color]} key={i}>{v}</Tag>
+                        })
+                      }
+                    </div>
+                  </li>
+                )
+              })
+            }
+          </ul>
+        )
+      }
+      {article.length !== 0 && <Pagination current={current} onChange={handleChange} pageSize={4} total={countNumber} />}
     </div>
   )
 }
